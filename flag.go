@@ -859,12 +859,13 @@ func defaultUsage(f *FlagSet) {
 // because it serves (via godoc flag Usage) as the example
 // for how to write your own usage function.
 
-// Usage prints to standard error a usage message documenting all defined command-line flags.
-// The function is a variable that may be changed to point to a custom function.
-// By default it prints a simple header and calls PrintDefaults; for details about the
-// format of the output and how to control it, see the documentation for PrintDefaults.
+// Usage prints, to the set destination, a usage message documenting all defined
+// command-line flags. The function is a variable that may be changed to point to a
+// custom function. By default it prints a simple header and calls PrintDefaults; for
+// details about the format of the output and how to control it, see the documentation
+// for PrintDefaults.
 var Usage = func() {
-	_, _ = fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
+	_, _ = fmt.Fprintf(CommandLine.Output(), "Usage of %s:\n", os.Args[0])
 	PrintDefaults()
 }
 
