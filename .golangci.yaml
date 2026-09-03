@@ -8,6 +8,11 @@ linters:
         - unconvert
         - unparam
     settings:
+        govet:
+            disable:
+                # Suggests reflect.Pointer over reflect.Ptr, which needs Go 1.18.
+                # This module still builds and tests on Go 1.12 (see go.mod).
+                - inline
         staticcheck:
             # Enable all options, with some exceptions.
             # For defaults, see https://golangci-lint.run/usage/linters/#staticcheck
